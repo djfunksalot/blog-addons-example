@@ -1,6 +1,6 @@
 #include <napi.h>
 
-namespace functionexample {
+namespace dio {
 
     std::string hello();
     Napi::String HelloWrapped(const Napi::CallbackInfo& info);
