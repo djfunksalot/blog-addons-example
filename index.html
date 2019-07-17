@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket demo</title>
+        <style type="text/css">
+            body {
+                font-family: "Courier New", sans-serif;
+                text-align: center;
+            }
+            .buttons {
+                font-size: 4em;
+                display: flex;
+                justify-content: center;
+            }
+            .button, .value, .value_did {
+                line-height: 1;
+                padding: 2rem;
+                margin: 2rem;
+                border: medium solid;
+                min-height: 1em;
+                min-width: 1em;
+            }
+            .button {
+                cursor: pointer;
+                user-select: none;
+            }
+            .minus {
+                color: red;
+            }
+            .plus {
+                color: green;
+            }
+            .value {
+                min-width: 2em;
+            }
+            .state {
+                font-size: 2em;
+            }
+        </style>
+    </head>
+    <body>
+	    <h1>device</h1>
+        <div class="buttons">
+            <div class="minus_did button">-</div>
+            <div class="value_did">?</div>
+            <div class="plus_did button">+</div>
+        </div>
+        <div class="state">
+            <span class="nodes">?</span> online
+        </div>
+        <script>
+            var minus_did = document.querySelector('.minus_did'),
+                plus_did = document.querySelector('.plus_did'),
+                value_did = document.querySelector('.value_did'),
+                nodes = document.querySelector('.nodes'),
+                websocket = new WebSocket("ws://padio:6789/");
+		//console.log(event.target.parentNode);
+            minus_did.onclick = function (event) {
+		    websocket.send(JSON.stringify({action: 'minus_did'}));
+            }
+            plus_did.onclick = function (event) {
+                websocket.send(JSON.stringify({action: 'plus_did'}));
+            }
+            websocket.onmessage = function (event) {
+                data = JSON.parse(event.data);
+                switch (data.type) {
+                    case 'state':
+		        console.log(data);
+                        value_did.textContent = data.value_did;
+                        break;
+                    case 'nodes':
+                        nodes.textContent = (
+                            data.count.toString() + " node" +
+                            (data.count == 1 ? "" : "s"));
+                        break;
+                    default:
+                        console.error(
+                            "unsupported event", data);
+                }
+            };
+        </script>
+    </body>
+</html>

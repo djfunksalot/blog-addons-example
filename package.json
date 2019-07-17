@@ -1,7 +1,7 @@
 {
-  "name": "test-addon",
+  "name": "padio",
   "version": "1.0.0",
-  "description": "",
+  "description": "data beacon",
   "main": "index.js",
   "gypfile": true,
   "scripts": {
@@ -11,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "node-gyp": "^3.7.0"
+    "node-gyp": "^3.7.0",
+    "websocket": "^0"
   },
   "dependencies": {
-    "node-addon-api": "^1.3.0"
+    "node-addon-api": "^1.3.0",
+    "websocket": "^0",
+    "ws": "^7.1.0"
   }
 }

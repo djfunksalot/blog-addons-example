@@ -1,22 +1,11 @@
-# Blog: NodeJS Addons Example
+# Padio: Websocket data IO for the nanopad
 
-This repo contains the example code for the blog post:
+This repo contains the example code for interfacing with nanopad
 
-**Beginners guide to writing NodeJS Addons using C++ and N-API (node-addon-api)**
+To run the code:
 
-
-*The blog link :*
-
-[https://medium.com/@atulanand94/beginners-guide-to-writing-nodejs-addons-using-c-and-n-api-node-addon-api-9b3b718a9a7f](https://medium.com/@atulanand94/beginners-guide-to-writing-nodejs-addons-using-c-and-n-api-node-addon-api-9b3b718a9a7f)
-
-
-To run the example:
-
-- `git clone https://github.com/master-atul/blog-addons-example`
+- `git clone https://github.com/ATCJohnson/nanopad`
+- `cd nanopad/padio`
 - `npm install`
-- `npm run build` //This is mostly not needed. But just in case
+- `npm run build` 
 - `node index.js`
-
-
-Hope this helps someone 🎉🌮
-
