@@ -76,10 +76,12 @@ static void pabort(const char *s)
 }
 
 
-static void transfer(int fd)
+static void transfer(int fd, int a, int b)
 {
 	int ret;
 	uint8_t tx[32] = {0, };
+	x = a;
+	y = b;
         int ydim;
 	for (ydim = 0; ydim < 16; ydim++) {
             if(ydim == 15 - y) {
@@ -175,6 +177,11 @@ static void transfer(int fd)
 	for (ret = 0; ret < 32; ret++) {
 		if (!(ret % 2))
 			puts("");
+		printf("%.2X ", tx[ret]);
+	}
+	for (ret = 0; ret < 32; ret++) {
+		if (!(ret % 2))
+			puts("");
 		printf("%.2X ", rx[ret]);
 	}
 	puts("");
@@ -225,7 +232,7 @@ int dio::channel(int a, int b){
 	printf("bits per word: %d\n", bits);
 	printf("max speed: %d Hz (%d KHz)\n", speed, speed/1000);
 
-	transfer(fd);
+	transfer(fd,a,b);
 	close(fd);
 	return ret;
 }

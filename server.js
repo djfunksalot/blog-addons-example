@@ -36,7 +36,7 @@ wsServer.on('request', function(request) {
 		        if(decoded.action == 'plus_did') {
 	                    STATE.value_did  = STATE.value_did + 1;
 			}
-			if(decoded.action == 'minus_did') {
+			if(decoded.action == 'minus_did' && STATE.value_did > 0) {
 	                    STATE.value_did  = STATE.value_did - 1;
 			}JSON.parse(message.utf8Data)
 		    }

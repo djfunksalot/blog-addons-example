@@ -20,7 +20,9 @@ function did_to_dev (did) {
 ws.on('message', function incoming(json) {
 	//
 	data = JSON.parse(json)
+	console.log(data)
 	var channel = did_to_dev(data.value_did)
+	console.log(channel)
         console.log('channel ', testAddon.channel(channel[0], channel[1]));
 
 });
